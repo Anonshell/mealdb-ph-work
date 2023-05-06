@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0px;
+}
+
+.banner{
+
+    background-image: url('/images/banner_1.png');
+    background-repeat: no-repeat;
+    background-size:cover;
+    height:70vh;
+    position:relative;
+
+    display: block;
+       
+
+}
+
+.banner .banner-text{
+
+
+
+}
+
+
+.banner h3{
+    font-size: 18px;
+    font-weight:400px ;
+
+}
+
+
+.banner #btn-search{
+
+
+}
