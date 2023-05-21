@@ -14,6 +14,17 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            border: none;
+            text-decoration: none;
+
+        }
+
         .fa-search {
             color: rgb(157, 149, 149);
 
@@ -64,31 +75,67 @@
 
                 <div class="search-style d-flex box-1">
                     <i class="fa fa-search mt-2" aria-hidden="true"></i>
-
-
-
-
-
+                    <input type="text" placeholder="search" id="search-field">
 
                 </div>
-                <button class="btn btn-warning btn-search border-2">Submit</button>
+                <button onclick="searchMeal()" class="btn btn-warning btn-search border-2">Submit</button>
             </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- section-two  -->
+
+    <section2 class="secton2">
+
+
+        <h2 class="text-center mt-5">Your favourite food</h2>
+
+
+
+
+
+        <div id="meals-container" class="row row-cols-2  g-4 p-3 mx-1">
+
+
+
+
+        </div>
+
+        <div id="no-meal-message" class="d-none">
+
+            <h3>No meal found</h3>
+
+        </div>
+
+        <!-- show all  -->
+
+        <div class="text-center d-none" id="show-all">
+
+            <div class="btn btn-primary">Show All</div>
 
         </div>
 
 
 
+    </section2>
 
+    <!-- loader  -->
 
+    <section id="loader" class="d-none">
+        <div style="height:200px" class="text-success d-flex justify-content-center align-items-center ">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </section>
 
-
-
-
-
-        <script src="meal-db.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-            crossorigin="anonymous"></script>
+    <script src="meal-db.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
