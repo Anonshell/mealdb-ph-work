@@ -78,7 +78,7 @@
                     <input type="text" placeholder="search" id="search-field">
 
                 </div>
-                <button onclick="searchMeal()" class="btn btn-warning btn-search border-2">Submit</button>
+                <button  id="btn-search" class="btn btn-warning border-2">Submit</button>
             </div>
 
         </div>
@@ -88,7 +88,7 @@
 
     <!-- section-two  -->
 
-    <section2 class="secton2">
+    <section class="secton2">
 
 
         <h2 class="text-center mt-5">Your favourite food</h2>
@@ -104,23 +104,18 @@
 
         </div>
 
-        <div id="no-meal-message" class="d-none">
-
-            <h3>No meal found</h3>
-
-        </div>
-
-        <!-- show all  -->
-
-        <div class="text-center d-none" id="show-all">
-
-            <div class="btn btn-primary">Show All</div>
-
+        <div id="no-found-message" class="mt-4 d-none">
+            <h3 class="text-warning">No Meal Found. Please try a new search</h3>
         </div>
 
 
+        <div id="show-all" class="text-center d-none">
+            <div id="btn-show-all" class="btn btn-primary">Show All</div>
+        </div>
 
-    </section2>
+
+    </section>
+
 
     <!-- loader  -->
 

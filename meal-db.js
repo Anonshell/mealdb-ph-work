@@ -1,39 +1,36 @@
-const loadMeals = (searchText) => {
+const loadMeals = (searchText,dataLimit) => {
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
   console.log(url);
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayMeals(data.meals));
+    .then((data) => displayMeals(data.meals, dataLimit));
 };
 
-const displayMeals = (meals) => {
+const displayMeals = (meals,dataLimit) => {
   const mealsContainer = document.getElementById("meals-container");
 
   mealsContainer.innerHTML = " ";
 
   //  display 6 card only
-  const showAll= document.getElementById('show-all')
-  if(meals.length > 6)
+  const showAll = document.getElementById("show-all");
 
-{ 
-  meals = meals.slice(0, 6);
- 
-   
-        showAll.classList.remove('d-none')
-}
-else{
-  showAll.classList.add('d-none')
-}
+
+  if (dataLimit && meals.length > 6) {
+    meals = meals.slice(0, 6);
+
+    showAll.classList.remove("d-none");
+  } else {
+    showAll.classList.add("d-none");
+  }
   // display no meals
 
-  const noMealMessage = document.getElementById("no-meal-message");
+  const noMealMessage = document.getElementById("no-found-message");
 
   if (meals.length === 0) {
     noMealMessage.classList.remove("d-none");
+  } else {
+    noMealMessage.classList.add("d-none");
   }
-   else{
-    noMealMessage.classList.add('d-none')
-   }
 
   // display all meals
 
@@ -66,54 +63,71 @@ else{
 
   // stop loader
 
-  
-  toggleSpinner(false)
-
-
-
-};
-
-const searchMeal = () => {
-   
-        toggleSpinner(true);
-
-  const searchText = document.getElementById("search-field").value;
-  console.log(searchText);
-
-  loadMeals(searchText);
-
+  toggleSpinner(false);
 };
 
 
 
-const toggleSpinner = isLoading =>{
+
+     const processSearch = (dataLimit) =>{
 
 
- const loaderSection = document.getElementById('loader');
+      toggleSpinner(true);
 
- if(isLoading){
+      const searchText = document.getElementById("search-field").value;
 
-      loaderSection.classList.remove('d-none')
+      console.log(searchText);
+    
+      loadMeals(searchText,dataLimit);
 
 
-
- }
- else{
-
-  loaderSection.classList.add('d-none')
- }
-
+     }
 
 
 
 
 
-}
+// search input field enter key
+
+document.getElementById('search-field').addEventListener('keypress', function (e) {
+  console.log(e.key)
+  if (e.key === 'Enter') {
+    
+         processSearch(6);
+  }
+
+});
+     
+     document.getElementById('btn-search').addEventListener('click', function(){
+      // start loader
+      processSearch(6);
+  })
+
+
+
+const toggleSpinner = (isLoading) => {
+  const loaderSection = document.getElementById("loader");
+
+  if (isLoading) {
+    loaderSection.classList.remove("d-none");
+  } else {
+    loaderSection.classList.add("d-none");
+  }
+};
 
 
 
 
 
+// not  the best way to  load
+
+document.getElementById("btn-show-all").addEventListener('click', function(){
+ 
+  processSearch();
+
+});
 
 
-loadMeals('fish');
+
+
+loadMeals();
